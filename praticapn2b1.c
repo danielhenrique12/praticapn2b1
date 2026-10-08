@@ -3,8 +3,8 @@
 	int main(){
 		int qtd, opcao, 
 		numVit, numEmp, numDer, numJogos, 
-		somaVit, somaEmp, somaDer, somaPontos, 
-		excCamp, boaCamp, campReg, campRuim, equipeMaior, equipeMenor, empatadosMaior, empatadosMenor, 
+		somaVit = 0, somaEmp = 0, somaDer = 0, somaPontos = 0, 
+		excCamp = 0, boaCamp = 0, campReg = 0, campRuim = 0, equipeMaior, equipeMenor, empatadosMaior, empatadosMenor, 
 		maiorPont = 0, menorPont, contador = 0;
 		float media;
 		
