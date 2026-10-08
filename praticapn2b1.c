@@ -1,7 +1,12 @@
 /* André Antunes, Daniel Henrique, Gustavo Martins */
 #include <stdio.h>
 	int main(){
-		int qtd, opcao, numVit, numEmp, numDer, numJogos, pontos;
+		int qtd, opcao, 
+		numVit, numEmp, numDer, numJogos, 
+		somaVit, somaEmp, somaDer, 
+		excCamp, boaCamp, campReg, campRuim, 
+		maiorPont = 0, menorPont , contador = 0;
+		float media;
 		
 		printf("Digite a quantidade de equipes e de jogos de cada: ");
 		scanf("%d,%d", &qtd, &numJogos);
@@ -50,20 +55,31 @@
 
 			if(pontos >= 15){
   		    printf("Situacao: Excelente campanha\n");
+  		    excCamp ++;
 			}
 			else if(pontos >= 10){
 		    printf("Situacao: Boa campanha\n");
+		    boaCamp ++;
 			}
 			else if(pontos >= 5){
 		    printf("Situacao: Campanha regular\n");
+		    campReg ++;
 			}
 			else{
 		    printf("Situacao: Campanha ruim\n");
+		    campRuim ++;
 			}
+			somaVit += numVit;
+			somaEmp += numEmp;
+			somaDer += numDer;
+			contador++;
 		}
 				break;
 			case 2:
-				printf("Mostrando resumo do campeonato...\n");
+				printf("Mostrando resumo do campeonato:\n");
+				if(contador==0){
+					
+				}
 				break;
 			case 3:
 				printf("Mostrando o regulamento...\n");
