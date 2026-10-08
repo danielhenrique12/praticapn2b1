@@ -6,10 +6,11 @@
 		scanf("%d", &qtd);
 		
 		while(qtd < 3 || qtd > 10){
-			printf("Valor invalido. Digite novamente: ");
+			printf("\nValor invalido. Digite novamente: ");
 			scanf("%d", &qtd);
 		}
-		printf("MENU PRINCIPAL\n");
+		numJogos = qtd * 2;
+		printf("\nMENU PRINCIPAL\n");
 		printf("1 - Registrar resultados do campeonato\n");
         printf("2 - Mostrar resumo do campeonato\n");
         printf("3 - Mostrar regulamento\n");
@@ -36,5 +37,13 @@
 				break;
 			default:
 				printf("Opcao invalida! Escolha um numero entre 1 e 5.\n");
+		}
+		for(int opcao = 1; opcao < qtd; opcao++){
+			printf("\nDigite o numero de vitorias, empates e derrotas do time %d:", opcao);
+			scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
+			while(numVit + numEmp + numDer != numJogos){
+				printf("\nValores invalidos. Digite o numero de vitorias, empates e derrotas do time %d novamente:", opcao);
+				scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
+			}
 		}
 	}
