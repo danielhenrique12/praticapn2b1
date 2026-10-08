@@ -83,6 +83,17 @@
 				break;
 			case 3:
 				printf("Mostrando o regulamento...\n");
+				printf("\nPontuacao por resultado:\n");
+    			printf("Vitoria: 3 pontos\n");
+    			printf("Empate: 1 ponto\n");
+    			printf("Derrota: 0 pontos\n");
+    			printf("\nSituacao da campanha:\n");
+   				printf("15 pontos ou mais: Excelente campanha\n");
+   				printf("Entre 10 e 14 pontos: Boa campanha\n");
+    			printf("Entre 5 e 9 pontos: Campanha regular\n");
+   				printf("Menos de 5 pontos: Campanha ruim\n");
+   				printf("Configuracao inicial: \n");
+   				printf("Quantidade de equipes: entre 3 e 10.\n");
 				break;
 			case 4:
 				printf("Simulando campanha de uma equipe...\n");
