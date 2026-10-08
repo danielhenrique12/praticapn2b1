@@ -71,32 +71,6 @@
 				break;
 			default:
 				printf("Opcao invalida! Escolha um numero entre 1 e 5.\n");
-		}
-		for(int i = 1; i < qtd; i++){
-			printf("\nDigite o numero de vitorias, empates e derrotas do time %d:", opcao);
-			scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
-			while(numVit + numEmp + numDer != numJogos){
-				printf("\nValores invalidos. Digite o numero de vitorias, empates e derrotas do time %d novamente:", opcao);
-				scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
-			}
-			pontos = (numVit * 3) + (numEmp * 1) + (numDer * 0);
 
-			printf("\nEquipe %d: %d vitorias, %d empates e %d derrota(s)\n",
-      		 equipe, numVit, numEmp, numDer);
-
-			printf("Pontuacao: %d pontos\n", pontos);
-
-			if(pontos >= 15){
-  		    printf("Situacao: Excelente campanha\n");
-			}
-			else if(pontos >= 10){
-		    printf("Situacao: Boa campanha\n");
-			}
-			else if(pontos >= 5){
-		    printf("Situacao: Campanha regular\n");
-			}
-			else{
-		    printf("Situacao: Campanha ruim\n");
-			}
 		}
 	}
