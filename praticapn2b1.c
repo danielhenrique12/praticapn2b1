@@ -1,11 +1,11 @@
 /* André Antunes, Daniel Henrique, Gustavo Martins */
 #include <stdio.h>
 	int main(){
-		int qtd, opcao, 
-		numVit, numEmp, numDer, numJogos, 
-		somaVit = 0, somaEmp = 0, somaDer = 0, somaPontos = 0, 
-		excCamp = 0, boaCamp = 0, campReg = 0, campRuim = 0, equipeMaior, equipeMenor, empatadosMaior, empatadosMenor, 
-		maiorPont = 0, menorPont, contador = 0;
+		int qtd, opcao; 
+		int numVit, numEmp, numDer, numJogos;
+		int somaVit = 0, somaEmp = 0, somaDer = 0, somaPontos = 0; 
+		int excCamp = 0, boaCamp = 0, campReg = 0, campRuim = 0, equipeMaior, equipeMenor, empatadosMaior, empatadosMenor;
+		int maiorPont = 0, menorPont, contador = 0;
 		float media;
 		
 		printf("Digite a quantidade de equipes e de jogos de cada: ");
@@ -15,6 +15,8 @@
 			printf("\nValor invalido. Digite novamente: ");
 			scanf("%d", &qtd);
 		}
+
+		while(opcao != 5){
 		printf("\nMENU PRINCIPAL\n");
 		printf("1 - Registrar resultados do campeonato\n");
         printf("2 - Mostrar resumo do campeonato\n");
@@ -66,12 +68,35 @@
 			somaVit += numVit;
 			somaEmp += numEmp;
 			somaDer += numDer;
+			somaPontos += pontos;
 			contador++;
-			if(pontos > maiorPont){
+			if(i == 1){
 				maiorPont = pontos;
+				menorPont = pontos;
 				equipeMaior = i;
+				equipeMenor = i;
 				empatadosMenor = 1;
+				empatadosMaior = 1;
 			}
+			else {
+                        if (pontos > maiorPont) {
+                            maiorPont = pontos;
+                            equipeMaior = i;
+                            empatadosMaior = 1;
+                        } else if (pontos == maiorPont) {
+                            empateMaior++;
+                        }
+
+                        if (pontos < menorPont) {
+                            menorPont = pontos;
+                            equipeMenor = i;
+                            empatadosMenor = 1;
+                        } else if (pontos == menor) {
+                            empateMenor++;
+                        }
+                    }
+					media = somaPontos / qtd;
+					contador = 1;
 		}
 				break;
 			case 2:
@@ -79,6 +104,29 @@
 				if(contador==0){
 					printf("Registre os resultados primeiro. ");
 				}
+				else {
+                    printf("\nRESUMO\n");
+                    printf("Equipes: %d\n", qtd);
+                    printf("Jogos por equipe: %d\n", numJogos);
+                    printf("Vitorias: %d\n", somaVit);
+                    printf("Empates: %d\n", somaEmp);
+                    printf("Derrotas: %d\n", somaDer);
+                    printf("Pontos: %d\n", somaPontos);
+                    printf("Media: %.2f\n", media);
+
+                    printf("Excelente: %d\n", excCamp);
+                    printf("Boa: %d\n", boaCamp);
+                    printf("Regular: %d\n", campReg);
+                    printf("Ruim: %d\n", campRuim);
+
+                    printf("Maior pontuacao: %d - Equipe %d\n",
+                           maiorPont, equipeMaior);
+                    printf("Empatadas na maior: %d\n", empatadosMaior);
+
+                    printf("Menor pontuacao: %d - Equipe %d\n",
+                           menorPont, equipeMenor);
+                    printf("Empatadas na menor: %d\n", empatadosMenor);
+                }
 				break;
 			case 3:
 				printf("Mostrando o regulamento...\n");
@@ -97,9 +145,11 @@
 			case 4:
 				printf("Simulando campanha de uma equipe...\n");
 				break;
+			case 5:
+                printf("Sistema encerrado com sucesso.\n");
+                break;
 			default:
 				printf("Opcao invalida! Escolha um numero entre 1 e 5.\n");
-				scanf("%d", &opcao);
 		}
-		printf("\nPrograma encerrado.")
 	}
+}
