@@ -3,8 +3,13 @@
 	int main(){
 		int qtd, opcao, numVit, numEmp, numDer, numJogos, pontos;
 		
-		printf("Digite a quantidade de equipes: ");
-		scanf("%d", &qtd);
+		printf("Digite a quantidade de equipes e de jogos de cada: ");
+		scanf("%d,%d", &qtd, &numJogos);
+		
+		while(qtd < 3 || qtd > 10){
+			printf("\nValor invalido. Digite novamente: ");
+			scanf("%d", &qtd);
+		}
 		
 		while(qtd < 3 || qtd > 10){
 			printf("\nValor invalido. Digite novamente: ");
