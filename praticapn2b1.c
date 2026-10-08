@@ -18,6 +18,11 @@
         printf("5 - Encerrar sistema\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
+
+		while (opcao < 1 || opcao > 5) {
+    		printf("Opcao invalida! Digite novamente: ");
+	    	scanf("%d", &opcao);
+		}
 	
 		switch(opcao){
 			case 1:
