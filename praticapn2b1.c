@@ -1,3 +1,4 @@
+/* André Antunes, Daniel Henrique, Gustavo Martins */
 #include <stdio.h>
 	int main(){
 		int qtd, opcao, numVit, numEmp, numDer, numJogos;
@@ -43,7 +44,7 @@
 			default:
 				printf("Opcao invalida! Escolha um numero entre 1 e 5.\n");
 		}
-		for(int opcao = 1; opcao < qtd; opcao++){
+		for(int i = 1; i < qtd; i++){
 			printf("\nDigite o numero de vitorias, empates e derrotas do time %d:", opcao);
 			scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
 			while(numVit + numEmp + numDer != numJogos){
