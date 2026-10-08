@@ -1,7 +1,7 @@
 /* André Antunes, Daniel Henrique, Gustavo Martins */
 #include <stdio.h>
 	int main(){
-		int qtd, opcao, numVit, numEmp, numDer, numJogos;
+		int qtd, opcao, numVit, numEmp, numDer, numJogos, pontos;
 		
 		printf("Digite a quantidade de equipes: ");
 		scanf("%d", &qtd);
@@ -28,6 +28,34 @@
 		switch(opcao){
 			case 1:
 				printf("\n1- Registrando resultados do campeonato\n ");
+				int i;
+					for( i = 1; i < qtd; i++){
+				printf("\nDigite o numero de vitorias, empates e derrotas do time %d:", opcao);
+				scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
+				while(numVit + numEmp + numDer != numJogos){
+				printf("\nValores invalidos. Digite o numero de vitorias, empates e derrotas do time %d novamente:", opcao);
+				scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
+			}
+			pontos = (numVit * 3) + (numEmp * 1) + (numDer * 0);
+
+			printf("\nEquipe %d: %d vitorias, %d empates e %d derrota(s)\n",
+      		 i, numVit, numEmp, numDer);
+
+			printf("Pontuacao: %d pontos\n", pontos);
+
+			if(pontos >= 15){
+  		    printf("Situacao: Excelente campanha\n");
+			}
+			else if(pontos >= 10){
+		    printf("Situacao: Boa campanha\n");
+			}
+			else if(pontos >= 5){
+		    printf("Situacao: Campanha regular\n");
+			}
+			else{
+		    printf("Situacao: Campanha ruim\n");
+			}
+		}
 				break;
 			case 2:
 				printf("Mostrando resumo do campeonato\n");
