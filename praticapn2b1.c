@@ -1,6 +1,6 @@
 #include <stdio.h>
 	int main(){
-		int qtd, opcao;
+		int qtd, opcao, numVit, numEmp, numDer, numJogos;
 		
 		printf("Digite a quantidade de equipes: ");
 		scanf("%d", &qtd);
