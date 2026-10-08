@@ -27,7 +27,7 @@
 	
 		switch(opcao){
 			case 1:
-				printf("\n1- Registrando resultados do campeonato\n ");
+				printf("\n1- Registrando resultados do campeonato...\n ");
 				int i;
 					for( i = 1; i < qtd; i++){
 				printf("\nDigite o numero de vitorias, empates e derrotas do time %d:", opcao);
@@ -58,13 +58,13 @@
 		}
 				break;
 			case 2:
-				printf("Mostrando resumo do campeonato\n");
+				printf("Mostrando resumo do campeonato...\n");
 				break;
 			case 3:
-				printf("Mostrando o regulamento\n");
+				printf("Mostrando o regulamento...\n");
 				break;
 			case 4:
-				printf("Simulando campanha de uma equipe\n");
+				printf("Simulando campanha de uma equipe...\n");
 				break;
 			case 5:
 				printf("Sistema encerrado\n");
