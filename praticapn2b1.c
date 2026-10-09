@@ -1,11 +1,12 @@
 /* André Antunes, Daniel Henrique, Gustavo Martins */
 #include <stdio.h>
 	int main(){
-		int qtd, opcao; 
+		int qtd, opcao=0; 
 		int numVit, numEmp, numDer, numJogos;
 		int somaVit = 0, somaEmp = 0, somaDer = 0, somaPontos = 0; 
 		int excCamp = 0, boaCamp = 0, campReg = 0, campRuim = 0, equipeMaior, equipeMenor, empatadosMaior, empatadosMenor;
 		int maiorPont = 0, menorPont, contador = 0;
+		int qtdSim, sim, qtdJogos, simVit, simEmp, simDer;
 		float media;
 		
 		printf("Digite a quantidade de equipes e de jogos de cada: ");
@@ -121,15 +122,15 @@
 
                     printf("Maior pontuacao: %d - Equipe %d\n",
                            maiorPont, equipeMaior);
-                    printf("Empatadas na maior: %d\n", empatadosMaior);
+                    printf("Empatadas na maior pontuacao: %d\n", empatadosMaior);
 
                     printf("Menor pontuacao: %d - Equipe %d\n",
                            menorPont, equipeMenor);
-                    printf("Empatadas na menor: %d\n", empatadosMenor);
+                    printf("Empatadas na menor pontuacao: %d\n", empatadosMenor);
                 }
 				break;
 			case 3:
-				printf("Mostrando o regulamento...\n");
+				printf("Mostrando o regulamento:\n");
 				printf("\nPontuacao por resultado:\n");
     			printf("Vitoria: 3 pontos\n");
     			printf("Empate: 1 ponto\n");
@@ -143,12 +144,59 @@
    				printf("Quantidade de equipes: entre 3 e 10.\n");
 				break;
 			case 4:
-				printf("Simulando campanha de uma equipe...\n");
-				break;
+				printf("Quantidade de simulacoes (1 a 5): ");
+                scanf("%d", &qtdSim);
+
+                while (qtdSim < 1 || qtdSim > 5) {
+                    printf("Valor invalido. Digite novamente: ");
+                    scanf("%d", &qtdSim);
+                }
+
+                for (sim = 1; sim <= qtdSim; sim++) {
+                    printf("\nSimulacao %d\n", i);
+
+                    printf("Vitorias: ");
+                    scanf("%d", &simVit);
+                    printf("Empates: ");
+                    scanf("%d", &simEmp);
+                    printf("Derrotas: ");
+                    scanf("%d", &simDer);
+
+                    while (simVit < 0 || simEmp < 0 || simDer < 0 ||
+                           simVit + simEmp + simDer != qtdJogos) {
+
+                        printf("Valores invalidos! Digite novamente.\n");
+
+                        printf("Vitorias: ");
+                        scanf("%d", &simVit);
+                        printf("Empates: ");
+                        scanf("%d", &simEmp);
+                        printf("Derrotas: ");
+                        scanf("%d", &simDer);
+                    }
+
+                    simPont = simVit * 3 + simEmp;
+
+                    printf("Pontos: %d\n", simPont);
+
+                    if (simPont >= 15)
+                        printf("Situacao: Excelente campanha\n",);
+                    else if (simPont >= 10)
+                       printf("Situacao: Boa campanha\n");
+                    else if (simPont >= 5)
+                        printf("Situacao: Campanha regular\n");
+                    else
+                        printf("Situacao: Campanha ruim\n");
+                }
+                break;
 			case 5:
                 printf("Sistema encerrado com sucesso.\n");
                 break;
 			default:
+				printf("Opcao invalida! Escolha um numero entre 1 e 5.\n");
+		}
+	}
+}
 				printf("Opcao invalida! Escolha um numero entre 1 e 5.\n");
 		}
 	}
