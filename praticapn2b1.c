@@ -1,20 +1,24 @@
 /* André Antunes, Daniel Henrique, Gustavo Martins */
 #include <stdio.h>
 	int main(){
-		int qtd, opcao=0; 
-		int numVit, numEmp, numDer, numJogos;
-		int somaVit = 0, somaEmp = 0, somaDer = 0, somaPontos = 0; 
-		int excCamp = 0, boaCamp = 0, campReg = 0, campRuim = 0, equipeMaior, equipeMenor, empatadosMaior, empatadosMenor;
-		int maiorPont = 0, menorPont, contador = 0;
-		int qtdSim, sim, qtdJogos, simVit, simEmp, simDer;
+		int qtd, opcao=0, i; 
+		int numVit, numEmp, numDer, numJogos, pontos;
+		int somaVit, somaEmp, somaDer, somaPontos; 
+		int excCamp, boaCamp, campReg, campRuim, equipeMaior, equipeMenor, empatadosMaior, empatadosMenor;
+		int maiorPont = 0, menorPont, contador;
+		int qtdSim, sim, simVit, simEmp, simDer, simPont;
 		float media;
 		
 		printf("Digite a quantidade de equipes e de jogos de cada: ");
-		scanf("%d,%d", &qtd, &numJogos);
+		scanf("%d %d", &qtd, &numJogos);
 		
 		while(qtd < 3 || qtd > 10){
 			printf("\nValor invalido. Digite novamente: ");
 			scanf("%d", &qtd);
+		}
+		while (numJogos < 1 || numJogos > 10) {
+    		printf("Quantidade invalida de jogos. Digite novamente (1 a 10): ");
+    		scanf("%d", &numJogos);
 		}
 
 		while(opcao != 5){
@@ -34,14 +38,26 @@
 	
 		switch(opcao){
 			case 1:
+				somaVit = 0;
+				somaEmp = 0;
+				somaDer = 0;
+				somaPontos = 0;
+
+				excCamp = 0;
+				boaCamp = 0;
+				campReg = 0;
+				campRuim = 0;
+
+				contador = 0;
+
 				printf("\n1- Registrando resultados do campeonato...\n ");
-				int i;
-					for( i = 1; i < qtd; i++){
-				printf("\nDigite o numero de vitorias, empates e derrotas do time %d:", opcao);
-				scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
-				while(numVit + numEmp + numDer != numJogos){
-				printf("\nValores invalidos. Digite o numero de vitorias, empates e derrotas do time %d novamente:", opcao);
-				scanf("%d,%d,%d", &numVit, &numEmp, &numDer);
+	
+					for( i = 1; i <= qtd; i++){
+				printf("\nDigite o numero de vitorias, empates e derrotas do time %d:", i);
+				scanf("%d %d %d", &numVit, &numEmp, &numDer);
+				while(numVit < 0 || numEmp < 0 || numDer < 0 || numVit + numEmp + numDer != numJogos){
+				printf("\nValores invalidos. Digite o numero de vitorias, empates e derrotas do time %d novamente:", i);
+				scanf("%d %d %d", &numVit, &numEmp, &numDer);
 			}
 			pontos = (numVit * 3) + (numEmp * 1) + (numDer * 0);
 
@@ -70,7 +86,6 @@
 			somaEmp += numEmp;
 			somaDer += numDer;
 			somaPontos += pontos;
-			contador++;
 			if(i == 1){
 				maiorPont = pontos;
 				menorPont = pontos;
@@ -85,20 +100,20 @@
                             equipeMaior = i;
                             empatadosMaior = 1;
                         } else if (pontos == maiorPont) {
-                            empateMaior++;
+                            empatadosMaior++;
                         }
 
                         if (pontos < menorPont) {
                             menorPont = pontos;
                             equipeMenor = i;
                             empatadosMenor = 1;
-                        } else if (pontos == menor) {
-                            empateMenor++;
+                        } else if (pontos == menorPont) {
+                            empatadosMenor++;
                         }
                     }
-					media = somaPontos / qtd;
-					contador = 1;
 		}
+					media = (float)somaPontos / qtd;
+					contador = 1;
 				break;
 			case 2:
 				printf("Mostrando resumo do campeonato:\n");
@@ -153,7 +168,7 @@
                 }
 
                 for (sim = 1; sim <= qtdSim; sim++) {
-                    printf("\nSimulacao %d\n", i);
+                    printf("\nSimulacao %d\n", sim);
 
                     printf("Vitorias: ");
                     scanf("%d", &simVit);
@@ -162,8 +177,7 @@
                     printf("Derrotas: ");
                     scanf("%d", &simDer);
 
-                    while (simVit < 0 || simEmp < 0 || simDer < 0 ||
-                           simVit + simEmp + simDer != qtdJogos) {
+                    while (simVit < 0 || simEmp < 0 || simDer < 0 || simVit + simEmp + simDer != numJogos) {
 
                         printf("Valores invalidos! Digite novamente.\n");
 
@@ -180,7 +194,7 @@
                     printf("Pontos: %d\n", simPont);
 
                     if (simPont >= 15)
-                        printf("Situacao: Excelente campanha\n",);
+                        printf("Situacao: Excelente campanha\n");
                     else if (simPont >= 10)
                        printf("Situacao: Boa campanha\n");
                     else if (simPont >= 5)
@@ -196,8 +210,5 @@
 				printf("Opcao invalida! Escolha um numero entre 1 e 5.\n");
 		}
 	}
-}
-				printf("Opcao invalida! Escolha um numero entre 1 e 5.\n");
-		}
-	}
+	return 0;
 }
